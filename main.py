@@ -1,8 +1,22 @@
 """
+Expense Entry Form: Date, Categoy, Amount, Description
 
-Notes for this comming poject
-Be detailed and etc
+Functionality:
+[INPUT]
+--User can add entry forms
 
-new changess
+[PROCESS]
+--User interaction
+--Expense calculation
+--Error handling
+--Data handling (csv or sql)
+
+[OUTPUT]
+--Can view the expense by category, date, amount
+--Can view summary report (e.g total monthly spending)
 
 """
+totalExpense = 10 + 2
+
+
+print(totalExpense)
