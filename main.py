@@ -16,7 +16,14 @@ Functionality:
 --Can view summary report (e.g total monthly spending)
 
 """
-totalExpense = 10 + 2
+
+def applyDiscount(price=900, percent=0.05):
+    discount = price * percent
+    newPrice = discount - price
+    return newPrice
 
 
-print(totalExpense)
+newPrice = applyDiscount(900, percent=0.05)
+
+applyDiscount(abs(newPrice))
+print(abs(newPrice))
