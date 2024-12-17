@@ -16,25 +16,9 @@ Functionality:
 --Can view summary report (e.g total monthly spending)
 
 """
-  
-date = input("Enter today's date: ")
-category = input("Enter the Category: ")
-amount = input("Enter the amount: ")
-description = input("Enter your description: ")
+name = input("Enter your name: ")
+age = input("Enter your age: ")
 
-with open("frutis.txt", "r") as f:
-    input_data = f.read()
-
-def applyDiscount(price=900, percent=0.05):
-    discount = price * percent
-    newPrice = discount - price
-    return newPrice
-
-
-newPrice = applyDiscount(900, percent=0.05)
-
-applyDiscount(abs(newPrice))
-
-print(f"the date is {date}")
-print(input_data)
-print(abs(newPrice))
+with open("user_info.txt", "w") as f:
+    f.write(name)
+    f.write(age)
