@@ -42,124 +42,60 @@ You have $ left to spend this month.
 That's roughly $ per day.
 
 """
-#User entry expense
+def main():
+    print("Running Expense Tracker!")
 
-expense_name = input("Enter your expense name: ")
-expense_amount = input("Enter expense amount: ")
+    #User entry expense
+    get_user_expense()
+    
+
+    #Save expense to CSV file
+    save_expense_to_file()
+
+    #Summaries expense totals
+    summarize_expense
 
 
-#If statement for category
-def expense_category():
+    #Show remaining budget
+
+def get_user_expense():
+    print("Getting User Expense")
+    expense_name = input("Enter expense name: ")
+    expense_amount = float(input("Enter expense amount: "))
+    print(f"You've entered {expense_name}, {expense_amount} pesos")
     
-    category = ["1. Food", "2. Home", "3. Work", "4. Fun", "5. Misc"]
-    print(category)
-    expense_category = input("Enter a category number: ")
-    print(expense_category)
+    expense_category = [
+        "Food", 
+        "Home", 
+        "Work", 
+        "Fun", 
+        "Misc",
+        ]
     
-    if expense_category == 1:
-        Food
-    
-    elif expense_category == 2:
-        Home
-    
-    elif expense_category == 3:
-        Work
-    
-    elif expense_category == 4:
-        Fun
-    
-    elif expense_category == 5:
-        Misc
-    
-    else:
-        print("Select number category from 1 to 5 only!")
+    while True:
+        print("Select a category: ")
+        for i, category_name in enumerate(expense_category):
+            print(f"    {i + 1}. {category_name}")
+            
+        value_range = f"[1 - {len(expense_category)}]"
         
-    
-#Classes
-class Food:
-    
-    def __init__(self, name, amount):
-        self.name = name
-        self.amount = amount
-    
-    def summarize(self, totalAmount):
-        totalAmount.amount += totalAmount
-
-class Home:
-    
-    def __init__(self, name, amount):
-        self.name = name
-        self.amount = amount
-    
-    def summarize(self, totalAmount):
-        totalAmount.amount += totalAmount
+        selected_index = int(input("Enter a category number {value_range}: ")) - 1
         
-class Work:
-    
-    def __init__(self, name, amount):
-        self.name = name
-        self.amount = amount
-    
-    def summarize(self, totalAmount):
-        totalAmount.amount += totalAmount
+        if selected_index in range(len(expense_category)):
+            break
+        else:
+            print("invalid category. Please try again!")
         
-class Fun:
+        break
     
-    def __init__(self, name, amount):
-        self.name = name
-        self.amount = amount
     
-    def summarize(self, totalAmount):
-        totalAmount.amount += totalAmount
-        
-class Misc:
+def save_expense_to_file():
+    print("Saving User Expense")
     
-    def __init__(self, name, amount):
-        self.name = name
-        self.amount = amount
+
+def summarize_expense():
+    print("Summarizing User Expense")
     
-    def summarize(self, totalAmount):
-        totalAmount.amount += totalAmount
-        
 
-
-
-#Save expense to CSV file
-
-with open("Food.txt", "w") as f:
-    f.write()
-
-with open("Home.txt", "w") as f:
-    f.write()
-
-with open("Work.txt", "w") as f:
-    f.write()
-    
-with open("Fun.txt", "w") as f:
-    f.write()
-    
-with open("Misc.txt", "w") as f:
-    f.write()
-
-#Summaries expense totals
-
-#Show remaining budget
-
-class Monster:
-    
-    def __init__(self, name, hp, attack):
-        self.name = name
-        self.hp = hp
-        self.attack = attack
-    
-    def fight(self, target):
-        target.hp -= self.attack
-        print(f"{self.name} attacked {target.name} for {self.attack} damage!")
-        print(f"{target.name} has {target.hp} HP left")
-        
-
-#print?
-Morgana = Monster("Morgana", 100, 25)
-Lux = Monster("Lux", 50, 35)
-Morgana.fight(Lux)
-Lux.fight(Morgana)
+if __name__ == "__main__":
+    main()
