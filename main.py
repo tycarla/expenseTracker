@@ -42,12 +42,14 @@ You have $ left to spend this month.
 That's roughly $ per day.
 
 """
+from expense import Expense
+
 def main():
     print("Running Expense Tracker!")
 
     #User entry expense
-    get_user_expense()
-    
+    expense = get_user_expense()
+    print(expense)
 
     #Save expense to CSV file
     save_expense_to_file()
@@ -82,7 +84,11 @@ def get_user_expense():
         selected_index = int(input("Enter a category number {value_range}: ")) - 1
         
         if selected_index in range(len(expense_category)):
-            break
+            selected_category = expense_category[selected_index]
+            new_expense = Expense(
+                name=expense_name, category=selected_category, amount=expense_amount
+                )
+            return
         else:
             print("invalid category. Please try again!")
         
