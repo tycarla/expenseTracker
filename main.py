@@ -46,17 +46,17 @@ from expense import Expense
 
 def main():
     print("Running Expense Tracker!")
+    expense_file_path = "expense.csv"
 
     #User entry expense
     expense = get_user_expense()
     print(expense)
 
-    #Save expense to CSV file
-    save_expense_to_file()
+    #Write their expense to a file
+    save_expense_to_file(expense, expense_file_path)
 
     #Summaries expense totals
-    summarize_expense
-
+    summarize_expense(expense_file_path)
 
     #Show remaining budget
 
@@ -95,9 +95,10 @@ def get_user_expense():
         break
     
     
-def save_expense_to_file():
-    print("Saving User Expense")
-    
+def save_expense_to_file(expense: Expense, expense_file_path):
+    print("Saving User Expense: {expense} to {expense_file_path}")
+    with open(expense_file_path, "a") as f:
+        f.write(f"{expense.name}, {expense.amount}, {expense.category}\n")
 
 def summarize_expense():
     print("Summarizing User Expense")
